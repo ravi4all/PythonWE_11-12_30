@@ -53,6 +53,16 @@ def deleteEmp():
     for index,d in enumerate(empList):
         print(index+1,d)
 
+def saveEmp():
+    with open('data.txt', 'a') as file:
+        # file.write(str(empList).strip('[]') + "\n")
+        for data in empList:
+            file.write(str(data).strip('{}') + "\n")
+    print("Data Written successfully...")
+
+def loadEmp():
+    pass
+
 def errHandler():
     print("Wrong Choice.....")
 
@@ -76,6 +86,7 @@ while True:
         "2" : readEmp,
         "3" : updateEmp,
         "4" : deleteEmp,
+        "7" : saveEmp,
         "9" : quit
     }
 
