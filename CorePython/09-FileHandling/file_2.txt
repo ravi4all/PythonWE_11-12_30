@@ -1,0 +1,3 @@
+Hello world... this file is written by python script
+
+This text is added using append mode in python
