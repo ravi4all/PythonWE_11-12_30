@@ -1,7 +1,9 @@
+from datetime import datetime
+
 class Facebook():
 
-    def __init__(self):
-        self.users = []
+    def __init__(self,users):
+        self.users = users
 
     def homeScreen(self):
         print("""
@@ -24,10 +26,10 @@ class Facebook():
         for users in self.users:
             if self.loginId == users['userMail'] and self.loginPwd == users['userPwd']:
                 print("Welcome User")
+                userObj.userOptions(users['userName'],users['userMail'])
             else:
                 print("Incorrect Mail or Password")
-
-        self.homeScreen()
+                self.homeScreen()
 
     def register(self):
         self.userData = {}
@@ -72,5 +74,63 @@ class Facebook():
 
         self.homeScreen()
 
-obj = Facebook()
-obj.homeScreen()
+
+class UserActivites(Facebook):
+
+    def __init__(self):
+        self.users = []
+        super().__init__(self.users)
+        self.all_posts = []
+        self.postData = {}
+
+    def userOptions(self, userName, userEmail):
+        print("""
+        1. Post Something
+        2. View Profile
+        3. Update Profile
+        4. Delete Profile
+        """)
+
+        todo = {
+            "1" : self.post,
+            "2" : self.viewProfile,
+            "3" : self.updateProfile,
+            "4" : self.deleteProfile
+        }
+
+        userChoice = input("Enter your choice : ")
+
+        todo.get(userChoice)(userName, userEmail)
+
+    def post(self, userName, userEmail):
+        print("Hello {}".format(userName))
+        userpost = input("What's in your mind : ")
+        current_time = datetime.now()
+        self.postData['userPost'] = userpost
+        self.postData['userName'] = userName
+        self.postData['postTime'] =  current_time
+
+        self.all_posts.append(self.postData)
+        for posts in self.all_posts:
+            print(posts)
+
+
+    def viewProfile(self, userName, userEmail):
+        pass
+
+    def updateProfile(self, userName, userEmail):
+        pass
+
+    def deleteProfile(self, userName, userEmail):
+        pass
+
+
+# obj = Facebook()
+# obj.homeScreen()
+
+userObj = UserActivites()
+userObj.homeScreen()
+
+# obj = UserActivites()
+# obj.userOptions('Ram','ram@gmail.com')
+# obj.homeScreen()
