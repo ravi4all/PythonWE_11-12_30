@@ -4,8 +4,15 @@ import cgi
 
 form = cgi.FieldStorage()
 
-username = form.getvalue('username')
+useremail = form.getvalue('useremail')
 userpwd = form.getvalue('userpwd')
+
+def checkUser():
+    if useremail == "ram@gmail.com":
+        return "Hello "+useremail
+    else:
+        return "User donot exist"
+
 
 print("Content-type:text/html\r\n\r\n")
 print("""
@@ -16,7 +23,7 @@ print("""
     <title>Title</title>
 </head>
 <body>
-    <h1>Hello {}</h1>
+    <h1>{}</h1>
 </body>
 </html>
-""".format(username))
+""".format(checkUser()))
