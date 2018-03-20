@@ -1,0 +1,24 @@
+#header {
+            display: flex;
+            justify-content : space-between;
+        }
+        #header ul li {
+            margin: 0px 15px;
+        }
+        ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            display: flex;
+            text-align: center;
+        }
+        #content ul {
+            flex-wrap: wrap;
+        }
+        #content ul li {
+            width: 30%;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+        }
